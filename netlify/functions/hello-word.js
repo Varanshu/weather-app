@@ -1,3 +1,3 @@
-export default handler = () => {
+export const handler = () => {
     return asd
 }
