@@ -5,7 +5,7 @@ import { createGlobalStyle } from 'styled-components/macro'
 const GlobalStyles = createGlobalStyle`
     body {
         margin: 0;
-        font-family: 'Ysabeau Infant', sans-serif;
+        font-family: Ysabeau Infant;
     }
     main {
         min-height:70vh;

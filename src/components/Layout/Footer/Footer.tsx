@@ -12,7 +12,7 @@ const Footer = () => {
     )
 }
 
-const Wrapper = styled.header`
+const Wrapper = styled.footer`
     background-color: #Dfe3e4;
     padding: 10px 0;
 `
