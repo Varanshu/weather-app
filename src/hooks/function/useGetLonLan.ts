@@ -9,7 +9,7 @@ interface state {
 export const useGetLonLan = () => {
     const getLonLan = async (city: string) => {
         try {
-            const data = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${process.env.REACT_APP_API_KEY}`)
+            const data = await fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${process.env.REACT_APP_API_KEY}`)
             const output = await data.json()
             return { response: output, error: null }
         } catch (error) {
