@@ -29,12 +29,6 @@ const CurrentContainer = ({
         visibility
     } = data
 
-    console.log("data", data);
-
-    // const convertTemp = (temp: number) => {
-    //     return useConvertTemp(temp)
-    // }
-
     const getFile = (id: number) => {
         // return useAnimationFile(id)
         if (id >= 200 && id < 300)
@@ -57,25 +51,27 @@ const CurrentContainer = ({
             return unknown
     }
 
+    const switchTemperature = useConvertTemp()
+
     return (
         <Container className='container container-lg'>
             <WeatherStats>
                 <TableContainer>
                     <Table_Row>
                         <th>Max Temperature of the Day</th>
-                        <td>{useConvertTemp(main.temp_max)}</td>
+                        <td>{switchTemperature(main.temp_max)}</td>
                     </Table_Row>
                     <Table_Row>
                         <th>Min Temperature of the Day</th>
-                        <td>{useConvertTemp(main.temp_min)}</td>
+                        <td>{switchTemperature(main.temp_min)}</td>
                     </Table_Row>
                     <Table_Row>
                         <th>Temperature of the Day</th>
-                        <td>{useConvertTemp(main.temp)}</td>
+                        <td>{switchTemperature(main.temp)}</td>
                     </Table_Row>
                     <Table_Row>
                         <th>What Temperature Feels Link</th>
-                        <td>{useConvertTemp(main.feels_like)}</td>
+                        <td>{switchTemperature(main.feels_like)}</td>
                     </Table_Row>
                     <Table_Row>
                         <th>Humidity</th>
