@@ -15,6 +15,9 @@ const Footer = () => {
 const Wrapper = styled.footer`
     background-color: #Dfe3e4;
     padding: 10px 0;
+    @media (max-width: 768px){
+        padding: 0 16px;
+    }
 `
 
 

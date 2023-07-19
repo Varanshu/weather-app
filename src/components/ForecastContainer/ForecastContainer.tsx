@@ -20,9 +20,6 @@ const ForecastContainer = ({
 }: {
     data: any
 }) => {
-    console.log(data)
-
-
     const getFile = (id: number) => {
         // return useAnimationFile(id)
         if (id >= 200 && id < 300)
@@ -114,11 +111,21 @@ const ForecastContainer = ({
 
 const Container = styled.div`
     display: flex;
-    gap: 20px;
+    gap: 30px;
+    flex-wrap: wrap;
+    @media (max-width: 768px){
+        padding: 0 16px;
+    }
+
 `
 
 const WeatherCard = styled.div`
     width: calc((100% / 6 ) - 10px);
+    @media (max-width: 768px){
+        /* padding: 0 16px; */
+        width: calc((100% / 2 ) - 15px);
+    }
+
 `
 
 const TableContainer = styled.table`

@@ -16,6 +16,7 @@ const GlobalStyles = createGlobalStyle`
     }
     footer {
         min-height: 10vh;
+        margin-top: 50px;
     }
 
     .container {

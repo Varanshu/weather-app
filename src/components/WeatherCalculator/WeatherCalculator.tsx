@@ -10,8 +10,6 @@ const WeatherCalculator = ({
     latLon: any
 }) => {
 
-    console.log("qwe", latLon);
-
     const { setLoading } = useLoading()
 
 
@@ -25,8 +23,6 @@ const WeatherCalculator = ({
     const getCurrentWeatherFn = async (e: any) => {
         setLoading(true)
         const { response, error } = await getCurrentWeather(latLon.lat, latLon.lon)
-        console.log("asdsadsasda", response, error);
-
         setResult({
             type: "current",
             response
@@ -38,7 +34,6 @@ const WeatherCalculator = ({
     const getForecastFn = async (e: any) => {
         setLoading(true)
         const { response, error } = await getForecastWeather(latLon.lat, latLon.lon)
-        console.log("zxc", response, error);
         setResult({
             type: "forecast",
             response
@@ -80,6 +75,7 @@ const ButtonContainer = styled.div`
     gap: 20px;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
 `
 
 const Button = styled.button`
@@ -98,6 +94,10 @@ const Button = styled.button`
     }
     &:disabled {
         background-color: #ccc;
+    }
+
+    @media (max-width: 768px){
+        /* padding: 0 16px; */
     }
     `
 

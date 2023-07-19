@@ -122,6 +122,8 @@ const CurrentContainer = ({
 const Container = styled.div`
     display: flex;
     gap: 20px;
+
+    flex-wrap: wrap;
 `
 
 const TableContainer = styled.table`
@@ -149,10 +151,19 @@ const Table_Row = styled.tr`
 
 const WeatherStats = styled.div`
     width: calc(50% - 10px);
+    @media (max-width: 768px){
+        padding: 0 16px;
+        width: 100%;
+    }
 `
 
 const WeatherDesc = styled.div`
     width: calc(50% - 10px);
+
+    @media (max-width: 768px){
+        padding: 0 16px;
+        width: 100%;
+    }
 `
 
 const Heading = styled.h1`

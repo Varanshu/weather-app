@@ -11,11 +11,8 @@ export const useGetLonLan = () => {
         try {
             const data = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${process.env.REACT_APP_API_KEY}`)
             const output = await data.json()
-            console.log("output", output);
             return { response: output, error: null }
         } catch (error) {
-            console.log("error", error);
-
             return { response: null, error: error }
         }
     }

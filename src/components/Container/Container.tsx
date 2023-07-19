@@ -20,24 +20,14 @@ const Container = () => {
     const submitHandler = async (e: any) => {
         e.preventDefault()
         setLoading(true)
-        console.log("asdasda", inputValue);
         setLatLon(null)
 
         const { response, error } = await getLonLan(inputValue)
 
-        console.log("res", response);
-
-
         setResponse(response)
         setError(error)
         setLoading(false)
-        // const forecase = await getForecastWeather(inputValue)
-        // console.log(forecase);
-
     }
-
-    console.log("latLon", latLon);
-
 
     return (
         <Wrapper className='container container-lg'>

@@ -50,12 +50,16 @@ const Wrapper = styled.header`
 
 const Logo = styled.img`
     height: 10vh;
+    padding-left: 16px;
 `
 
 const TempContainer = styled.ul`
     position: relative;
     display: inline-flex;
     gap: 20px;
+    @media (max-width: 768px){
+        padding-right:  16px;
+    }
 `
 
 const RadioItem = styled.li`
