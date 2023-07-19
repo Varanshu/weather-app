@@ -13,9 +13,9 @@ export const useGetForecastWeather = () => {
             const output = await data.json()
             console.log("output", output);
 
-            return { response: output, loading: false, error: null }
+            return { response: output, error: null }
         } catch (error) {
-            return { response: null, loading: false, error: error }
+            return { response: null, error: error }
         }
     }
 

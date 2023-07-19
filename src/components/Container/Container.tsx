@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { styled } from 'styled-components/macro'
-import { useGetCurrentWeather, useGetForecastWeather, useGetLonLan } from '../../hooks'
+import { useGetCurrentWeather, useGetForecastWeather, useGetLonLan, useLoading } from '../../hooks'
 import CitySelector from '../CitySelector/CitySelector'
 import WeatherCalculator from '../WeatherCalculator/WeatherCalculator'
 
@@ -10,20 +10,27 @@ const Container = () => {
 
     const [response, setResponse] = useState<any>()
     const [error, setError] = useState<any>()
-    const [loading, setLoading] = useState<boolean>(false)
 
     const [latLon, setLatLon] = useState<any>()
+
+    const { setLoading } = useLoading()
 
     const getLonLan = useGetLonLan()
 
     const submitHandler = async (e: any) => {
         e.preventDefault()
+        setLoading(true)
         console.log("asdasda", inputValue);
         setLatLon(null)
 
         const { response, error } = await getLonLan(inputValue)
+
+        console.log("res", response);
+
+
         setResponse(response)
         setError(error)
+        setLoading(false)
         // const forecase = await getForecastWeather(inputValue)
         // console.log(forecase);
 

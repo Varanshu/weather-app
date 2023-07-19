@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { styled } from 'styled-components/macro'
-import { useGetCurrentWeather, useGetForecastWeather } from '../../hooks'
+import { useGetCurrentWeather, useGetForecastWeather, useLoading } from '../../hooks'
+import CurrentContainer from '../CurrentContainer/CurrentContainer'
+import ForecastContainer from '../ForecastContainer/ForecastContainer'
 
 const WeatherCalculator = ({
     latLon
@@ -9,6 +11,8 @@ const WeatherCalculator = ({
 }) => {
 
     console.log("qwe", latLon);
+
+    const { setLoading } = useLoading()
 
 
     const [result, setResult] = useState<any>()
@@ -19,6 +23,7 @@ const WeatherCalculator = ({
 
 
     const getCurrentWeatherFn = async (e: any) => {
+        setLoading(true)
         const { response, error } = await getCurrentWeather(latLon.lat, latLon.lon)
         console.log("asdsadsasda", response, error);
 
@@ -27,9 +32,11 @@ const WeatherCalculator = ({
             response
         })
         setError(error)
+        setLoading(false)
     }
 
     const getForecastFn = async (e: any) => {
+        setLoading(true)
         const { response, error } = await getForecastWeather(latLon.lat, latLon.lon)
         console.log("zxc", response, error);
         setResult({
@@ -37,20 +44,28 @@ const WeatherCalculator = ({
             response
         })
         setError(error)
+        setLoading(false)
     }
 
     return (
         <Wrapper>
             <div className='container container-lg'>
                 <ButtonContainer>
-                    <Button onClick={getCurrentWeatherFn}>Get Current Weather</Button>
-                    <Button onClick={getForecastFn}>Get Forecast Weather</Button>
+                    <Button onClick={getCurrentWeatherFn} disabled={result?.type === "current"}>Get Current Weather</Button>
+                    <Button onClick={getForecastFn} disabled={result?.type === "forecast"}>Get Forecast Weather</Button>
                 </ButtonContainer>
-                {/* {
-                    result
-                        && result.type === 'current'
-                        ?
-                } */}
+
+                <Container>
+                    {
+                        result && result.type && result.response
+                            ? result.type === 'current'
+                                ? <CurrentContainer data={result.response} />
+                                : result.type === "forecast"
+                                    ? <ForecastContainer data={result.response} />
+                                    : null
+                            : null
+                    }
+                </Container>
             </div>
         </Wrapper>
     )
@@ -67,18 +82,28 @@ const ButtonContainer = styled.div`
     align-items: center;
 `
 
-const Button = styled.div`
+const Button = styled.button`
     padding: 10px 65px;
     border-radius: 100px;
     border: 1px solid #ccc;
     background-color: transparent;
-    cursor: pointer;
+    &:not(:disabled){
+        cursor: pointer;
+    }
     filter: brightness(1);
     transition: all 0.25s ease-in-out;
     &:hover {
         background-color: #ccc;
         filter: brightness(0.75);
     }
+    &:disabled {
+        background-color: #ccc;
+    }
     `
+
+const Container = styled.div`
+    margin-top: 30px;
+
+`
 
 export default WeatherCalculator
