@@ -111,10 +111,11 @@ const ForecastContainer = ({
 
 const Container = styled.div`
     display: flex;
-    gap: 30px;
+    gap: 20px;
     flex-wrap: wrap;
     @media (max-width: 768px){
         padding: 0 16px;
+        gap: 30px;
     }
 
 `
