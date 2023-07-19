@@ -81,6 +81,10 @@ const CurrentContainer = ({
                         <th>Pressure</th>
                         <td>{main.pressure} hPa</td>
                     </Table_Row>
+                    <Table_Row>
+                        <th>Visibility</th>
+                        <td>{visibility}</td>
+                    </Table_Row>
                 </TableContainer>
 
                 <div>

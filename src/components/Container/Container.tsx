@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { styled } from 'styled-components/macro'
-import { useGetCurrentWeather, useGetForecastWeather, useGetLonLan, useLoading } from '../../hooks'
+import { useGetLonLan, useLoading } from '../../hooks'
 import CitySelector from '../CitySelector/CitySelector'
 import WeatherCalculator from '../WeatherCalculator/WeatherCalculator'
 
@@ -28,6 +28,8 @@ const Container = () => {
         setError(error)
         setLoading(false)
     }
+
+    console.log("error", error)
 
     return (
         <Wrapper className='container container-lg'>
